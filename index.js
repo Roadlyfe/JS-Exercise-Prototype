@@ -58,8 +58,23 @@ Person.prototype.toString = function(){
 
 
 const jasmine = new Person("Jasmine", 63);
+const mark = new Person("mark", 36);
+const mandy = new Person("Mandy", 28)
 
+console.log(jasmine.toString());
+console.log(mark.toString());
+console.log(mandy.toString());
 
+mark.eat('pie');
+mark.eat('pie');
+mark.eat('pie');
+mark.eat('pie');
+mark.eat('pie');
+
+console.log(mark.stomach);
+
+mark.poop();
+console.log(mark.stomach);
 
 
 
@@ -87,10 +102,19 @@ Car.prototype.fill = function (gallons){
   this.tank += gallons;
 }
 Car.prototype.drive = function (distance){
-
+this.odometer += distance;
+this.tank -= distance / this.milesPerGallon;
+if(this.tank <= 0){
+  return `I ran out of fuel at ${this.odometer} miles`;
+}
 }
 
+const toyota = new Car('Toyota', 30);
 
+console.log(toyota.tank);
+toyota.fill(10);
+console.log(toyota.drive(1000));
+console.log(toyota.tank);
 
 /*
   TASK 3
@@ -109,13 +133,15 @@ Baby.prototype.play = function(){
 return `${this.name} loves playing with their ${this.favoriteToy}`
 }
 
+const abbie = new Baby("Abbie", 1, "💸💵💸");
+console.log(abbie.play());
 /* 
   TASK 4
   In your own words explain the four principles for the "this" keyword below:
-  1. 
-  2. 
-  3. 
-  4. 
+  1. *Global binding* when in the global scope, the value of "this" will be the window object.  
+  2. *Implicit binding* when the function is called by a preceding dot, the object left of the dot gets "this".
+  3. *New Binding* When a constructor function is used, "this" refers to the instance of the object that is created and returned by the constructor.
+  4. *Explicit binding* Whenever JavaScript's call or apply method is used, "this" is explicity defined. 
 */
 
 
